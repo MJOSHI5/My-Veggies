@@ -18,7 +18,7 @@
             {% csrf_token %}
             <label for="veggie">Veggie</label>
             <input type="text" name="veggie">
-            <button type="submit">Post</button>
+            <button type="submit">Add</button>
 
         </form>
         
@@ -30,13 +30,11 @@
                 <th>Veggie</th>
                 <th>Uploaded By</th>
                 <th>Actions</th>
-                <th>Like / Unlike</th>
-                <th>ACTion 2</th>
             </tr>
             {% for veggie in all_veggies %}
             <tr>
 
-             <!--all_veggies from context-->
+            <!--all_veggies from context-->
             
                 <td>{{veggie.id}}</td>
                 <td>{{veggie.kind}}</td>
@@ -45,23 +43,19 @@
                 <td>
                     <a href="/show/{{veggie.id}}">Show</a> 
 
-                    {% if veggie.user_uploader ==  user %}
+                    
                         {% if user in veggie.likes.all %}
                             <a href="/show/{{veggie.id}}/un_likes">Un Like</a>
                         {% endif %}
-                    {% endif %}
+                    
         
                     
                 
-                    {% if veggie.user_uploader ==  user %}
+                    
                         {% if user not in veggie.likes.all %}
                             <a href="/show/{{veggie.id}}/likes">Like</a>
                         {% endif %}
-                    {% endif %}
                     
-                    
-                    
-                    <a href="/show/{{veggie.id}}/likes">Likes</a>
                     
                     {% if veggie.user_uploader == user %}
                         <a href="/veggies/{{veggie.id}}/edit">Edit</a>
@@ -72,13 +66,13 @@
                     {% endif %} <!--End of if statement for Delete-->
                 </td>
                 
-                <td>{{veggie.user_likes.first_name}}</td> 
+                
 
                 {% if veggie.user_likes == user %}
                     <td>{{user.first_name}}</td>
                 {% endif %}
                 
-                <td>{{veggie.user_likes.first_name}}</td>
+                
                 
 
                 
