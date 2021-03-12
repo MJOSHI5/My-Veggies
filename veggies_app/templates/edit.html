@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <title>Edit {{veggie.kind}}</title>
+</head>
+<body>
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <a href="/logout">Logout</a>
+    <h1>Veggie: {{veggie.id}}</h1>
+    <h2>Kind: {{veggie.kind}}</h2>
+
+    
+    <form action="/edit-form/{{veggie.id}}" method="POST">
+        {% csrf_token %}
+        <label for="kind">Veggie:</label>
+        <input type="text" name="veggie">
+        <button type="submit">Edit</button>
+
+    </form>
+    
+    <a href="/success">Back</a>
+</body>
+</html>

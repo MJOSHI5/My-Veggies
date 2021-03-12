@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <title>Likes by: {{user.first_name}} {{user.last_name}}</title>
+</head>
+<body>
+
+    <div id="wrapper">
+        <h1>{{user.first_name}}  {{user.last_name}}</h1>
+        
+        <a href="/logout">Logout</a> 
+        {% for veggie in user.user_likes.all %}
+            <p>{{veggie.kind}}</p>
+        {% endfor %}
+
+        
+
+        
+        <a href="/success">Back</a>
+    </div><!--End of Wrapper-->
+
+</body>
+</html>

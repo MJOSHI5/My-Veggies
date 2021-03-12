@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <title>{{veggie.kind}}</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <h1>{{user.first_name}} {{user.last_name}} </h1>
+        <h2>Veggie:</h2> <p>{{veggie.kind}}</p>
+        <h2>Added By:</h2> <p>{{veggie.user_uploader.first_name}}  {{veggie.user_uploader.last_name}}</p>
+        {% for veggie in user.user_likes.all %}
+            <p>{{veggie.kind}}</p>
+        {% endfor %}
+
+        
+        
+        <a href="/veggies/{{veggie.id}}/edit">Edit</a>
+        <a href="/success">Back</a>
+
+    </div><!--End of Wrapper-->
+    
+</body>
+</html>

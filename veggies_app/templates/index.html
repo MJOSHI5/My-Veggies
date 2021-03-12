@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <title>Login / Registration</title>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div class="logreg">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            <h1>Register</h1>
+
+            <form action="/register" method="POST"> <!--path('register', views.register),-->
+            
+                {% csrf_token %}
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name">
+
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name">
+
+
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+
+
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+
+
+                <label for="confirm_password">Password:</label>
+                <input type="password" name="confirm_pw">
+
+                <button type="submit">Register</button>
+            
+            
+            </form>
+
+        </div><!--End of Login Registration-->
+
+
+        <div class="logreg">
+            <h1>Login</h1>
+
+            <form action="/login" method="POST"><!--path('login', views.login),-->
+            
+                {% csrf_token %}
+        
+
+
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+
+
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+
+
+
+
+                <button type="submit">Login</button>
+            
+            
+            </form>
+
+        </div><!--End of Login Registration-->
+
+
+    </div><!--End of Wrapper-->
+
+</body>
+</html>
